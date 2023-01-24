@@ -53,6 +53,7 @@ const FilterByOverallTime = (props: Props) => {
 			return
 		}
 		setShowFiltered(true)
+		setNoUsersFound(false)
 	}
 	const hideList = () => {
 		setShowFiltered(false)
