@@ -1,32 +1,32 @@
-.container{
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
 }
-.title{
-    font-weight: 500;
-    font-size: 20px;
+.title {
+  font-weight: 500;
+  font-size: 20px;
 }
 
-.inputsButtons{
-    display: flex;
-    align-items: center;
-    gap: 10px;
+.inputsButtons {
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
-.input{
-    height: 50px;
-    width: 40px;
-    padding-left: 6px;
-    outline: none;
-    border: 1px solid #009EE4;
-    border-radius: 6px;
-    font-size: 24px;
+.input {
+  height: 50px;
+  width: 40px;
+  padding-left: 6px;
+  outline: none;
+  border: 1px solid #009ee4;
+  border-radius: 6px;
+  font-size: 24px;
 }
-.list{
-    padding: 10px;
-    border: 1px solid #000;
-    position: absolute;
-    top: 90px;
+.list {
+  padding: 10px;
+  border: 1px solid #000;
+  position: absolute;
+  top: 90px;
 }
