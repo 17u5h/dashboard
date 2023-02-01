@@ -26,6 +26,9 @@ const FilterByOverallTime = ({ users }: Users) => {
         setFilterTimeSec(value)
         break
       }
+      default: {
+        console.error('в inputHandler не отработал ни один кейс')
+      }
     }
   }
 
@@ -84,7 +87,11 @@ const FilterByOverallTime = ({ users }: Users) => {
         <div className={style.list}>
           {'Общее количество: ' + filteredUsers?.length}
           {filteredUsers?.map((el: FilteredUser) => (
-            <OneFilteredUser firstName={el.firstName} duration={el.duration} />
+            <OneFilteredUser
+              key={Math.random() * 100000}
+              firstName={el.firstName}
+              duration={el.duration}
+            />
           ))}
         </div>
       )}
