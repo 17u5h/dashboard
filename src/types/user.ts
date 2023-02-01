@@ -1,18 +1,21 @@
-
-export type interval = {
+export type Interval = {
 	from: string
 	till: string
 	duration: string
 }
 
-export type user ={
+export type User ={
 	date: string
 	firstName: string
 	timeStart: string
 	timeEnd: string
-	intervals: interval[]
+	intervals: Interval[]
 }
-export type filteredUser = {
+
+export type Users = {
+	users: User[]
+}
+export type FilteredUser = {
 	firstName: string
 	duration: number
 }

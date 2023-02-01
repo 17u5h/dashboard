@@ -1,4 +1,6 @@
-export const stub = [
+import {User} from "../types/user";
+
+export const stub: User[] = [
 	{
 		date: '14.01.2023 12:22',
 		firstName: 'Алексей',

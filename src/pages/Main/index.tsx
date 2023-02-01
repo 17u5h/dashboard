@@ -1,13 +1,11 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import style from './style.module.css'
-import Logo from "../components/Logo/Logo";
-import UIButton from "../components/UI/UIButton/UIButton";
-import {stub} from "../stubs/stub";
-import FilterByOverallTime from "../components/FilterUsers/FilterByOverallTime/FilterByOverallTime";
+import Logo from "../../components/Logo";
+import UIButton from "../../components/UI/UIButton";
+import {stub} from "../../stubs/stub";
+import FilterByOverallTime from "../../components/FilterUsers/FilterByOverallTime";
 
 const Main = () => {
-	
-	
 
 	return (
 		<div className={style.wrapper}>
