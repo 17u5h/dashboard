@@ -80,8 +80,8 @@ const FilterByOverallTime = ({ users }: Users) => {
             if (e.key === 'Enter') showList()
           }}
         />
-        <UIButton onClick={showList}>показать</UIButton>
-        <UIButton onClick={hideList}>скрыть</UIButton>
+        <UIButton onClick={showList}>Показать</UIButton>
+        <UIButton onClick={hideList}>Скрыть</UIButton>
       </div>
       {showFiltered && (
         <div className={style.list}>
