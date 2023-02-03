@@ -9,10 +9,10 @@ import { initialTimeToFilter } from '../../../constants/constants'
 
 const FilterByOverallTime = ({ users }: Users) => {
   const [filteredUsers, setFilteredUsers] = useState<FilteredUser[]>([])
-  const [filterTimeMin, setFilterTimeMin] = useState(initialTimeToFilter)
-  const [filterTimeSec, setFilterTimeSec] = useState('')
-  const [showFiltered, setShowFiltered] = useState(false)
-  const [noUsersFound, setNoUsersFound] = useState(false)
+  const [filterTimeMin, setFilterTimeMin] = useState<string>(initialTimeToFilter)
+  const [filterTimeSec, setFilterTimeSec] = useState<string>('')
+  const [showFiltered, setShowFiltered] = useState<boolean>(false)
+  const [noUsersFound, setNoUsersFound] = useState<boolean>(false)
 
   const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value
@@ -32,9 +32,9 @@ const FilterByOverallTime = ({ users }: Users) => {
     }
   }
 
-  const createUnfilteredUser = (user: User) => ({
-    firstName: user.firstName,
-    duration: calcSummaryDuration(user.intervals)
+  const createUnfilteredUser = ({ firstName, intervals }: User): FilteredUser => ({
+    firstName,
+    duration: calcSummaryDuration(intervals)
   })
 
   const showList = () => {

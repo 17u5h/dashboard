@@ -1,25 +1,25 @@
 .input {
-    display: none;
+  display: none;
 }
 
 .inputLabel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 800px;
-    height: 80px;
-    background-color: #009ee4;
-    border-radius: 10px;
-    color: #f7f5f6;
-    font-size: 32px;
-    font-weight: 400;
-    user-select: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 800px;
+  height: 80px;
+  background-color: #009ee4;
+  border-radius: 10px;
+  color: #f7f5f6;
+  font-size: 32px;
+  font-weight: 400;
+  user-select: none;
 }
 
 .inputLabel:hover {
-    background-color: #0080c1;
+  background-color: #0080c1;
 }
 
 .inputLabel:active {
-    background-color: #005c83;
+  background-color: #005c83;
 }
