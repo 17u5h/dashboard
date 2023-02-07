@@ -4,6 +4,7 @@ import Logo from '../../components/Logo'
 import UIButton from '../../components/UI/UIButton'
 import { stub } from '../../stubs/stub'
 import FilterByOverallTime from '../../components/FilterUsers/FilterByOverallTime'
+import InputExcel from "../../components/InputExcel/InputExcel";
 
 const Main = () => {
   return (
@@ -21,7 +22,7 @@ const Main = () => {
       <div className={style.container}>
         <FilterByOverallTime users={stub} />
       </div>
-
+      <InputExcel/>
     </div>
   )
 }

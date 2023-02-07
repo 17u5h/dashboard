@@ -1,10 +1,10 @@
 import React from 'react'
 import style from './style.module.css'
-import secToMinConverter from '../../../../lib/secToMinConverter'
+import secToOutputTimeConverter from '../../../../lib/secToOutputTimeConverter'
 import { FilteredUser } from '../../../../types/user'
 
 const OneFilteredUser = ({ firstName, duration }: FilteredUser) => {
-  const time = secToMinConverter(duration)
+  const time = secToOutputTimeConverter(duration)
 
   return (
     <div className={style.container}>

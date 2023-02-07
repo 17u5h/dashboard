@@ -105,14 +105,14 @@ export const stub: User[] = [
   },
   {
     date: '14.01.2023 12:22',
-    firstName: 'Анна Шаврина',
-    timeStart: '12:35',
+    firstName: 'Наталтя',
+    timeStart: '12:40',
     timeEnd: '12:45',
     intervals: [
       {
-        from: '12:35:32',
+        from: '12:40:32',
         till: '12:45:17',
-        duration: '9.8'
+        duration: '4.75'
       }
     ]
   }

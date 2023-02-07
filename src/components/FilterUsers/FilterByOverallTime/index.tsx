@@ -3,9 +3,10 @@ import { FilteredUser, User, Users } from '../../../types/user'
 import style from './style.module.css'
 import UIButton from '../../UI/UIButton'
 import OneFilteredUser from './OneFilteredUser'
-import calcSummaryDuration from '../../../lib/calcSummaryDuration'
+import calcSummaryDurationInMinutes from '../../../lib/calcSummaryDurationInMinutes'
 import { TimeType } from '../../../enum/TimeType'
 import { initialTimeToFilter } from '../../../constants/constants'
+import {minToSecConverter} from "../../../lib/minToSecConverter";
 
 const FilterByOverallTime = ({ users }: Users) => {
   const [filteredUsers, setFilteredUsers] = useState<FilteredUser[]>([])
@@ -34,13 +35,13 @@ const FilterByOverallTime = ({ users }: Users) => {
 
   const createUnfilteredUser = ({ firstName, intervals }: User): FilteredUser => ({
     firstName,
-    duration: calcSummaryDuration(intervals)
+    duration: minToSecConverter(calcSummaryDurationInMinutes(intervals))
   })
 
   const showList = () => {
-    const seconds = Math.abs(Number(filterTimeMin) * 60 + Number(filterTimeSec))
+    const filterByThisSeconds = Math.abs(Number(filterTimeMin) * 60 + Number(filterTimeSec))
     const unfilteredUsers = users.map((el) => createUnfilteredUser(el))
-    const filterUsers = unfilteredUsers.filter((el) => el.duration >= seconds)
+    const filterUsers = unfilteredUsers.filter((el) => el.duration >= filterByThisSeconds)
     setFilteredUsers(filterUsers)
 
     if (!filterUsers?.length) {
