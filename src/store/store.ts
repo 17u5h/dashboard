@@ -1,13 +1,17 @@
 import {create} from "zustand";
-import {Interval} from "../types/user";
+import {User} from "../types/user";
+import {UsersState} from "../types/store";
 
-type UsersState = {
-	username: string
-	timeStart: string
-	timeEnd: string
-	intervals: Interval[]
-}
 
-const useUsersStore = create<UsersState>((set) => {
+const useUsersStore = create<UsersState>((set) => ({
+	users: [],
+	dispatchUser: (user: User) => set(state => ({
+			users: [
+				...state.users,
+				user
+			]
+		}
+	))
+}))
 
-})
+export default useUsersStore

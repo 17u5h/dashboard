@@ -5,8 +5,10 @@ export type Interval = {
 }
 
 export type User = {
-  date: string
   username: string
+  email: string
+  tel: string
+  IP: string
   timeStart: string
   timeEnd: string
   intervals: Interval[]
