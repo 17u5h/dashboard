@@ -3,12 +3,12 @@ import style from './style.module.css'
 import secToOutputTimeConverter from '../../../../lib/secToOutputTimeConverter'
 import { FilteredUser } from '../../../../types/user'
 
-const OneFilteredUser = ({ firstName, duration }: FilteredUser) => {
+const OneFilteredUser = ({ username, duration }: FilteredUser) => {
   const time = secToOutputTimeConverter(duration)
 
   return (
     <div className={style.container}>
-      <p>{firstName}</p>
+      <p>{username}</p>
       <p>{'время: ' + time}</p>
     </div>
   )
