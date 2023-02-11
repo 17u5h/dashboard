@@ -10,7 +10,6 @@ export const parseArrOfArrToObject = (arrOfArr: Row[], dispatchUser: (user: User
 	const timeIntervalTillHeader = necessaryFields[8]
 	if (!usernameHeader && !emailHeader && !timeIntervalFromHeader && !timeIntervalTillHeader) throw new Error('Рассчет невозможен. Выложенный эксель файл не соответствует документации')
 
-
 	for (let i = 2; i < arrOfArr.length; i++) {
 		const userArr = arrOfArr[i]
 		let nextRow = arrOfArr[i + 1]
