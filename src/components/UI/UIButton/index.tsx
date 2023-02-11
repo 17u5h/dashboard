@@ -6,10 +6,10 @@ type Props = {
   children: string
 }
 
-const UIButton = (props: Props) => {
+const UIButton = ({onClick, children}: Props) => {
   return (
-    <div className={style.button} onClick={props.onClick}>
-      {props.children}
+    <div className={style.button} onClick={onClick}>
+      {children}
     </div>
   )
 }

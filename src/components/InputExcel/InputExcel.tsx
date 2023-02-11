@@ -1,7 +1,7 @@
 import React from 'react'
 import style from './style.module.css'
 import readXlsxFile from 'read-excel-file'
-import {parseArrOfArrToObject} from "../../lib/parseArrOfArrToObject";
+import {parseExcelTableToObject} from "../../lib/parseExcelTableToObject";
 import useUsersStore from "../../store/store";
 
 const InputExcel = () => {
@@ -16,7 +16,7 @@ const InputExcel = () => {
 
 		try {
 			const arrOfArr = await readXlsxFile(file, {sheet: 'Зрители'})
-			parseArrOfArrToObject(arrOfArr, dispatchUser)
+			parseExcelTableToObject(arrOfArr, dispatchUser)
 		} catch (e) {
 			console.error(e)
 		}
