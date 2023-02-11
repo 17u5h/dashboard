@@ -1,23 +1,22 @@
 export type Interval = {
-  from: string
-  till: string
-  duration: string
+	from: number
+	till: number
 }
 
 export type User = {
-  username: string
-  email: string
-  tel: string
-  IP: string
-  timeStart: string
-  timeEnd: string
-  intervals: Interval[]
+	username: string
+	email: string
+	tel: string
+	IP: string
+	timeStart: string
+	timeEnd: string
+	intervals: Interval[]
 }
 
 export type Users = {
-  users: User[]
+	users: User[]
 }
 export type FilteredUser = {
-  username: string
-  duration: number
+	username: string
+	duration: number
 }

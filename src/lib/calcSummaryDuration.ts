@@ -1,9 +1,8 @@
-import { Interval } from '../types/user'
-import {converterHHMMSStoSec} from "./converterHHMMSStoSec";
+import {Interval} from '../types/user'
 
 const calcSummaryDuration = (intervals: Interval[]): number => {
-  const durations = intervals.map((el) => converterHHMMSStoSec(el.till) - converterHHMMSStoSec(el.from))
-  return durations.reduce((acc, el) => acc + el, 0)
+	const durations = intervals.map((el) => el.till - el.from)
+	return durations.reduce((acc, el) => acc + el, 0)
 }
 
 export default calcSummaryDuration
