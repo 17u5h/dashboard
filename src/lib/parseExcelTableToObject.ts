@@ -1,14 +1,18 @@
 import {Row} from "read-excel-file";
 import {User} from "../types/user";
 import {converterDateCellToSec} from "./converterDateCellToSec";
+import {converterCellTimeToSec} from "./converterCellTimeToSec";
 
-export const parseExcelTableToObject = (excelTable: Row[], dispatchUser: (user: User) => void) => {
+export const parseExcelTableToObject = (excelTable: Row[], dispatchUser: (user: User) => void, dispatchVideoStartTime: (time: number) => void) => {
 	const necessaryFields = excelTable[1]
 	const usernameHeader = necessaryFields[1]
 	const emailHeader = necessaryFields[2]
 	const timeIntervalFromHeader = necessaryFields[7]
 	const timeIntervalTillHeader = necessaryFields[8]
 	if (!usernameHeader && !emailHeader && !timeIntervalFromHeader && !timeIntervalTillHeader) throw new Error('Рассчет невозможен. Выложенный эксель файл не соответствует документации')
+
+	const videoStartSeconds = converterCellTimeToSec(excelTable[2][0])
+	dispatchVideoStartTime(videoStartSeconds)
 
 	for (let i = 2; i < excelTable.length; i++) {
 		const userArr = excelTable[i]
