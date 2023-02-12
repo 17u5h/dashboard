@@ -2,9 +2,11 @@ import { User } from './user'
 
 export type UsersState = {
   users: User[]
-  incomingUsers: User[]
+  incomingUsers: User[][]
+  leavingUsers: User[][]
   dispatchUser: (user: User) => void
-  dispatchIncomers: (user: User) => void
+  dispatchIncomers: (user: User[]) => void
+  dispatchLeavers: (user: User[]) => void
 }
 
 export type VideoState = {
