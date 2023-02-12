@@ -6,7 +6,7 @@ type Props = {
   children: string
 }
 
-const UIButton = ({onClick, children}: Props) => {
+const UIButton = ({ onClick, children }: Props) => {
   return (
     <div className={style.button} onClick={onClick}>
       {children}
