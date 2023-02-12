@@ -1,5 +1,5 @@
 # skypro-video-statistics
 
-npm run build
+npm run build - сборка проекта
 
-npm run start
+npm run start - запуск проекта на localhost
