@@ -8,13 +8,35 @@ import {useUsersStore, useVideoStore} from '../../store/store'
 import {distributeUsersInIntervals} from '../../lib/distributeUsersInIntervals'
 
 const Main = () => {
-	const users = useUsersStore((state) => state.users)
-	const incomingUsers = useUsersStore((state) => state.incomingUsers)
-	const leavingUsers = useUsersStore((state) => state.leavingUsers)
-	const dispatchIncomers = useUsersStore((state) => state.dispatchIncomers)
-	const dispatchLeavers = useUsersStore((state) => state.dispatchLeavers)
-	const dispatchVideoEndTime = useVideoStore((state) => state.dispatchVideoEndTime)
-	const videoStart = useVideoStore((state) => state.videoStart)
+	const {
+		users,
+		incomingUsers,
+		leavingUsers,
+		dispatchIncomers,
+		dispatchLeavers
+	} = useUsersStore(({
+											 users,
+											 incomingUsers,
+											 leavingUsers,
+											 dispatchIncomers,
+											 dispatchLeavers
+										 }) => ({
+		users,
+		incomingUsers,
+		leavingUsers,
+		dispatchIncomers,
+		dispatchLeavers
+	}))
+	const {
+		dispatchVideoEndTime,
+		videoStart
+	} = useVideoStore(({
+											 dispatchVideoEndTime,
+											 videoStart
+										 }) => ({
+		dispatchVideoEndTime,
+		videoStart
+	}))
 
 	useEffect(() => {
 		console.log(incomingUsers)

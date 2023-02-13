@@ -9,10 +9,8 @@ export const parseExcelTableToObject = (
   dispatchVideoStartTime: (time: number) => void
 ) => {
   const necessaryFields = excelTable[1]
-  const usernameHeader = necessaryFields[1]
-  const emailHeader = necessaryFields[2]
-  const timeIntervalFromHeader = necessaryFields[7]
-  const timeIntervalTillHeader = necessaryFields[8]
+  const [,usernameHeader,emailHeader,,,,timeIntervalFromHeader,timeIntervalTillHeader] = necessaryFields
+
   if (!usernameHeader && !emailHeader && !timeIntervalFromHeader && !timeIntervalTillHeader)
     throw new Error('Рассчет невозможен. Выложенный эксель файл не соответствует документации')
 

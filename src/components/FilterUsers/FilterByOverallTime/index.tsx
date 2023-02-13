@@ -55,6 +55,9 @@ const FilterByOverallTime = ({ users }: Users) => {
     setShowFiltered(false)
     setNoUsersFound(false)
   }
+  const showListOnPressEnter = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') showList()
+  }
 
   return (
     <div className={style.container}>
@@ -65,20 +68,16 @@ const FilterByOverallTime = ({ users }: Users) => {
           className={style.input}
           name="min"
           value={filterTimeMin}
-          onChange={(e) => inputHandler(e)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') showList()
-          }}
+          onChange={inputHandler}
+          onKeyDown={showListOnPressEnter}
         />
         <label htmlFor="sec">секунд</label>
         <input
           className={style.input}
           name="sec"
           value={filterTimeSec}
-          onChange={(e) => inputHandler(e)}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter') showList()
-          }}
+          onChange={inputHandler}
+          onKeyDown={showListOnPressEnter}
         />
         <UIButton onClick={showList}>Показать</UIButton>
         <UIButton onClick={hideList}>Скрыть</UIButton>
@@ -86,11 +85,11 @@ const FilterByOverallTime = ({ users }: Users) => {
       {showFiltered && (
         <div className={style.list}>
           {'Общее количество: ' + filteredUsers?.length}
-          {filteredUsers?.map((el: FilteredUser) => (
+          {filteredUsers?.map(({username, duration}) => (
             <OneFilteredUser
               key={Math.random() * 100000}
-              username={el.username}
-              duration={el.duration}
+              username={username}
+              duration={duration}
             />
           ))}
         </div>

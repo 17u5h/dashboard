@@ -10,9 +10,9 @@ const InputExcel = () => {
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target
-    if (target.files === null) throw new Error('файл не передан')
+    if (!target.files) throw new Error('файл не передан')
     const files = event.target.files
-    if (files === null) throw new Error('файл не передан')
+    if (!files) throw new Error('файл не передан')
     const file = files[0]
 
     try {
