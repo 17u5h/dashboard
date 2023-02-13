@@ -26,7 +26,7 @@ const InputExcel = () => {
   return (
     <div className={style.inputContainer}>
       <label htmlFor="inputExcel" className={style.inputLabel}>
-        Прикрепить excel файл от Bizon'a
+        Загрузить excel файл от Bizon'a
       </label>
       <input
         id="inputExcel"
