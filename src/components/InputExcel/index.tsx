@@ -5,7 +5,7 @@ import { parseExcelTableToObject } from '../../lib/parseExcelTableToObject'
 import { useUsersStore, useVideoStore } from '../../store/store'
 
 const InputExcel = () => {
-  const dispatchUser = useUsersStore((state) => state.dispatchUser)
+  const {dispatchUser} = useUsersStore(({dispatchUser}) => ({dispatchUser}))
   const dispatchVideoStartTime = useVideoStore((state) => state.dispatchVideoStartTime)
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {

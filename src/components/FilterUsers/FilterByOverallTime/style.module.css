@@ -30,4 +30,5 @@
   position: absolute;
   top: 110px;
   background-color: #fff;
+  z-index: 1;
 }
