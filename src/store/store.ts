@@ -5,7 +5,9 @@ import {UsersState, VideoState} from '../types/store'
 export const useUsersStore = create<UsersState>((set) => ({
 	users: [],
 	incomingUsers: [],
+	incomingUsersCount: [],
 	leavingUsers: [],
+	leavingUsersCount: [],
 	dispatchUser: (user: User) =>
 		set((state) => ({
 			...state,
@@ -16,11 +18,25 @@ export const useUsersStore = create<UsersState>((set) => ({
 			...state,
 			incomingUsers: [...state.incomingUsers, incomingUser]
 		})),
+	dispatchIncomingUsersCount: (incomingUsersCount: number[]) => set((state) => ({
+		...state, incomingUsersCount
+	})),
 	dispatchLeavers: (leavingUser: User[]) =>
 		set((state) => ({
 			...state,
 			leavingUsers: [...state.leavingUsers, leavingUser]
-		}))
+		})),
+	dispatchLeavingUsersCount: (leavingUsersCount: number[]) => set((state) => ({
+		...state, leavingUsersCount
+	})),
+	dispatchClearData: () => set(state => ({
+		...state,
+		users: [],
+		incomingUsers: [],
+		incomingUsersCount: [],
+		leavingUsers: [],
+		leavingUsersCount: [],
+	}))
 }))
 
 export const useVideoStore = create<VideoState>((set) => ({
