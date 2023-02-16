@@ -4,7 +4,7 @@
 
 ![image](https://user-images.githubusercontent.com/102058870/219438403-f4e64f8f-43fe-4aa0-997e-5b1cd0371a3f.png)
 
-![image](https://user-images.githubusercontent.com/102058870/219437135-02171b92-e990-4d8f-b9c9-f71775d65e41.png)
+![image](https://user-images.githubusercontent.com/102058870/219438652-3ae6ae42-63c2-4dac-9e64-5fccedb022cd.png)
 
 npm run build - сборка проекта
 
