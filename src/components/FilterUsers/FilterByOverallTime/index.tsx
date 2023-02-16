@@ -39,6 +39,7 @@ const FilterByOverallTime = ({users}: Users) => {
 
 	const showList = () => {
 		const filterByThisSeconds = Math.abs(Number(filterTimeMin) * 60 + Number(filterTimeSec))
+		if (!filterByThisSeconds && filterByThisSeconds !== 0) throw new Error('введено не число')
 		const unfilteredUsers = users.map((el) => createUnfilteredUser(el))
 		const filterUsers = unfilteredUsers.filter((el) => el.duration >= filterByThisSeconds)
 		setFilteredUsers(filterUsers)
@@ -62,6 +63,7 @@ const FilterByOverallTime = ({users}: Users) => {
 	return (
 		<div className={style.container}>
 			<p className={style.title}>Отфильтровать устастников по количеству проведенного времени</p>
+			<p className={style.title}>и установить время "доверия" к пользователю</p>
 			<div className={style.inputsButtons}>
 				<label htmlFor="min">минут</label>
 				<input

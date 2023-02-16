@@ -20,3 +20,8 @@ export type VideoState = {
   dispatchVideoStartTime: (time: number) => void
   dispatchVideoEndTime: (time: number) => void
 }
+
+export type SettingsState = {
+  intervalForFiltering: number
+  dispatchIntervalForFiltering: (time: number) => void
+}

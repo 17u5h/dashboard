@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import style from './style.module.css'
-import {useUsersStore} from "../../store/store";
+import {useSettingsStore, useUsersStore} from "../../store/store";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
-import {intervalForFiltering} from "../../constants/constants";
 import {CategoricalChartState} from "recharts/types/chart/generateCategoricalChart";
 
 const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
 	const {incomingUsers, leavingUsers} = useUsersStore(({incomingUsers, leavingUsers}) => ({incomingUsers, leavingUsers}))
+	const {intervalForFiltering} = useSettingsStore(({intervalForFiltering}) => ({intervalForFiltering}))
 	const [data, setData]: any[] | undefined = useState([])
 
 	useEffect(() => {

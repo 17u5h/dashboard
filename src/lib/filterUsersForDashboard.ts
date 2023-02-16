@@ -8,7 +8,12 @@ export const filterUsersForDashboard = (allUsers: User[]) => {
 
 	const createUsersForDashboard = (intervalsLength: number, el: User) => {
 		for (let i = 0; i < intervalsLength; i++) {
-			usersForDashboard.push(el)
+			const oneIntervalUser: User = {
+				...el,
+				intervals: [el.intervals[i]]
+			}
+
+			usersForDashboard.push(oneIntervalUser)
 		}
 	}
 	usersClone.forEach(el => createUsersForDashboard(el.intervals.length, el))

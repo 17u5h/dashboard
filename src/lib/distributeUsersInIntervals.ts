@@ -1,5 +1,4 @@
 import {User} from '../types/user'
-import {intervalForFiltering} from '../constants/constants'
 import {filterUsersForDashboard} from "./filterUsersForDashboard";
 
 export const distributeUsersInIntervals = (
@@ -7,7 +6,8 @@ export const distributeUsersInIntervals = (
 	dispatchIncomers: (user: User[]) => void,
 	dispatchLeavers: (user: User[]) => void,
 	dispatchVideoEndTime: (time: number) => void,
-	videoStartSeconds: number | null
+	videoStartSeconds: number | null,
+	intervalForFiltering: number
 ) => {
 
 	if (videoStartSeconds === null) return

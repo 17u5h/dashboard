@@ -4,49 +4,30 @@ import Logo from '../../components/Logo'
 import UIButton from '../../components/UI/UIButton'
 import FilterByOverallTime from '../../components/FilterUsers/FilterByOverallTime'
 import InputExcel from '../../components/InputExcel'
-import {useUsersStore, useVideoStore} from '../../store/store'
-import {distributeUsersInIntervals} from '../../lib/distributeUsersInIntervals'
+import {useUsersStore} from '../../store/store'
 import Charts from "../../components/Charts";
 import {User} from "../../types/user";
 import ShowIncomersInMoment from "../../components/Charts/ShowUsersInMoment/ShowIncomersInMoment";
 import ShowLeaversInMoment from "../../components/Charts/ShowUsersInMoment/ShowLeaversInMoment";
+import ChartControls from "../../components/ChartControls";
 
 const Main = () => {
-	const {users, dispatchIncomers, dispatchLeavers,} = useUsersStore(({
-																																			 users,
-																																			 dispatchIncomers,
-																																			 dispatchLeavers,
-																																		 }) => ({
-		users,
-		dispatchIncomers,
-		dispatchLeavers,
-	}))
-	const {dispatchVideoEndTime, videoStart} = useVideoStore(({
-																															dispatchVideoEndTime,
-																															videoStart
-																														}) => ({dispatchVideoEndTime, videoStart}))
+	const {users} = useUsersStore(({users}) => ({users}))
 
 	const [incomingUsersInMoment, setIncomingUsersInMoment] = useState<User[]>([])
 	const [leavingUsersInMoment, setLeavingUsersInMoment] = useState<User[]>([])
-
-	const handleRenderChart = () => {
-		distributeUsersInIntervals(users, dispatchIncomers, dispatchLeavers, dispatchVideoEndTime, videoStart)
-	}
 
 	return (
 		<div className={style.wrapper}>
 			<header className={style.header}>
 				<Logo/>
-				<UIButton
-					onClick={handleRenderChart}
-				>
-					Какая-то нопка
-				</UIButton>
+				<UIButton onClick={() => console.log('click')}>Какая-то кнопка</UIButton>
 			</header>
 			<div className={style.container}>
 				<FilterByOverallTime users={users}/>
 			</div>
 			<InputExcel/>
+			<ChartControls/>
 			<Charts setIncomingUsersInMoment={setIncomingUsersInMoment} setLeavingUsersInMoment={setLeavingUsersInMoment}/>
 			<div className={style.showUsersBlock}>
 				{incomingUsersInMoment && <ShowIncomersInMoment incomingUsersInMoment={incomingUsersInMoment}/>}

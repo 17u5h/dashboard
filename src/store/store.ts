@@ -1,6 +1,6 @@
 import {create} from 'zustand'
 import {User} from '../types/user'
-import {UsersState, VideoState} from '../types/store'
+import {SettingsState, UsersState, VideoState} from '../types/store'
 
 export const useUsersStore = create<UsersState>((set) => ({
 	users: [],
@@ -52,4 +52,12 @@ export const useVideoStore = create<VideoState>((set) => ({
 			...state,
 			videoEnd: time
 		}))
+}))
+
+export const useSettingsStore = create<SettingsState>((set) => ({
+	intervalForFiltering: 60,
+	dispatchIntervalForFiltering: (time: number) => set((state) => ({
+		...state,
+		intervalForFiltering: time
+	}))
 }))

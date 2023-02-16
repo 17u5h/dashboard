@@ -1,0 +1,32 @@
+.controlContainer {
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.inputsButtons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.input {
+    height: 50px;
+    width: 40px;
+    padding-left: 6px;
+    outline: none;
+    border: 1px solid #009ee4;
+    border-radius: 6px;
+    font-size: 24px;
+}
+
+.hint {
+    position: absolute;
+    top: -34px;
+    left: 200px;
+    border: 1px solid #000;
+    color: #000;
+    background-color: #efc6c6;
+    padding: 2px;
+}

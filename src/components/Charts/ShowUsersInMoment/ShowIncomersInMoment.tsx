@@ -10,7 +10,7 @@ type Props = {
 const ShowIncomersInMoment = ({incomingUsersInMoment}: Props) => {
 	return (
 		<div className={style.usersTab}>
-			{incomingUsersInMoment.map(el => (<div className={style.incomingUser}>
+			{incomingUsersInMoment.map(el => (<div className={style.incomingUser} key={Math.random() * 100000}>
 				<div>{el.username},</div>
 				<div>провел: {secToOutputTimeConverter(el.intervals[0].till - el.intervals[0].from)}</div>
 			</div>))}
