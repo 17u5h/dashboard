@@ -13,18 +13,18 @@ export const useUsersStore = create<UsersState>((set) => ({
 			...state,
 			users: [...state.users, user]
 		})),
-	dispatchIncomers: (incomingUser: User[]) =>
+	dispatchIncomers: (incomingUsers: User[][]) =>
 		set((state) => ({
 			...state,
-			incomingUsers: [...state.incomingUsers, incomingUser]
+			incomingUsers
 		})),
 	dispatchIncomingUsersCount: (incomingUsersCount: number[]) => set((state) => ({
 		...state, incomingUsersCount
 	})),
-	dispatchLeavers: (leavingUser: User[]) =>
+	dispatchLeavers: (leavingUsers: User[][]) =>
 		set((state) => ({
 			...state,
-			leavingUsers: [...state.leavingUsers, leavingUser]
+			leavingUsers
 		})),
 	dispatchLeavingUsersCount: (leavingUsersCount: number[]) => set((state) => ({
 		...state, leavingUsersCount

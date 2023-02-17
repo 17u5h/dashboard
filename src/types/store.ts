@@ -7,9 +7,9 @@ export type UsersState = {
   leavingUsers: User[][]
   leavingUsersCount: number[]
   dispatchUser: (user: User) => void
-  dispatchIncomers: (user: User[]) => void
+  dispatchIncomers: (user: User[][]) => void
   dispatchIncomingUsersCount: (user: number[]) => void
-  dispatchLeavers: (user: User[]) => void
+  dispatchLeavers: (user: User[][]) => void
   dispatchLeavingUsersCount: (user: number[]) => void
   dispatchClearData: () => void
 }

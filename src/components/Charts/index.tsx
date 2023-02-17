@@ -4,10 +4,16 @@ import {useSettingsStore, useUsersStore} from "../../store/store";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 import {CategoricalChartState} from "recharts/types/chart/generateCategoricalChart";
 
+type Data = {
+	time: number
+	"подключилось": number
+	"отключилось": number
+}
+
 const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
 	const {incomingUsers, leavingUsers} = useUsersStore(({incomingUsers, leavingUsers}) => ({incomingUsers, leavingUsers}))
 	const {intervalForFiltering} = useSettingsStore(({intervalForFiltering}) => ({intervalForFiltering}))
-	const [data, setData]: any[] | undefined = useState([])
+	const [data, setData] = useState<Data[]>([])
 
 	useEffect(() => {
 		const preparedData = incomingUsers.map((el, i) => ({
@@ -46,7 +52,6 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
 					<XAxis dataKey="time"/>
 					<YAxis/>
 					<Tooltip/>
-					{/*<Legend/>*/}
 					<Line dataKey="подключилось" stroke="#5cd584" dot={{r: 0}} activeDot={{r: 8}} strokeWidth={2}
 								className="clickable"/>
 					<Line dataKey="отключилось" stroke="#d55c5c" dot={{r: 0}} activeDot={{r: 8}} strokeWidth={2}/>
