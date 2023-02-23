@@ -6,21 +6,22 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 800px;
+  gap: 12px;
+  width: 1400px;
   height: 80px;
-  background-color: #56b8e3;
-  border: 6px dashed #009ee4;
+  background-color: #EDECFF;
   border-radius: 10px;
-  color: #f7f5f6;
+  color: #565EEF;
   font-size: 32px;
   font-weight: 400;
   user-select: none;
 }
 
 .inputLabel:hover {
-  background-color: #0080c1;
+  background-color: #dbdaec;
+  border: 1px solid #565EEF;
 }
 
 .inputLabel:active {
-  background-color: #005c83;
+  background-color: #bfbecc;
 }

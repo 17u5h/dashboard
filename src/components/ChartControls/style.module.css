@@ -1,8 +1,20 @@
+.controlWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
 .controlContainer {
     position: relative;
     display: flex;
     align-items: center;
     gap: 20px;
+}
+
+.title {
+    font-weight: 500;
+    font-size: 32px;
+    line-height: 28px;
 }
 
 .inputsButtons {
@@ -12,13 +24,22 @@
 }
 
 .input {
-    height: 50px;
-    width: 40px;
-    padding-left: 6px;
-    outline: none;
-    border: 1px solid #009ee4;
-    border-radius: 6px;
+    height: 60px;
+    width: 80px;
+    border: none;
+    border-radius: 10px;
+    background-color: #E9ECED;
     font-size: 24px;
+    text-align: center;
+}
+
+.input:hover {
+    border: 1px solid #000;
+}
+
+.label {
+    font-size: 24px;
+    line-height: 32px;
 }
 
 .hint {

@@ -3,6 +3,7 @@ import style from './style.module.css'
 import readXlsxFile from 'read-excel-file'
 import { parseExcelTableToObject } from '../../lib/parseExcelTableToObject'
 import { useUsersStore, useVideoStore } from '../../store/store'
+import Icon from "./Icon";
 
 const InputExcel = () => {
   const {dispatchUser} = useUsersStore(({dispatchUser}) => ({dispatchUser}))
@@ -18,7 +19,7 @@ const InputExcel = () => {
     try {
       const excelTable = await readXlsxFile(file, { sheet: 'Зрители' })
       parseExcelTableToObject(excelTable, dispatchUser, dispatchVideoStartTime)
-    } catch (e) {
+       } catch (e) {
       console.error(e)
     }
   }
@@ -26,7 +27,7 @@ const InputExcel = () => {
   return (
     <div className={style.inputContainer}>
       <label htmlFor="inputExcel" className={style.inputLabel}>
-        Загрузить excel файл от Bizon'a
+        <Icon/>Загрузить excel-файл от Bizon
       </label>
       <input
         id="inputExcel"

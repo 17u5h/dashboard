@@ -62,8 +62,8 @@ const FilterByOverallTime = ({users}: Users) => {
 
 	return (
 		<div className={style.container}>
-			<p className={style.title}>Отфильтровать устастников по количеству проведенного времени</p>
-			<p className={style.title}>и установить время "доверия" к пользователю</p>
+			<p className={style.title}>Аналитика марафона</p>
+			<p className={style.subtitle}>Отфильтровать участников по количеству проведенного времени и установить время "доверия" к пользователю</p>
 			<div className={style.inputsButtons}>
 				<label htmlFor="min">минут</label>
 				<input
@@ -81,8 +81,8 @@ const FilterByOverallTime = ({users}: Users) => {
 					onChange={inputHandler}
 					onKeyDown={showListOnPressEnter}
 				/>
-				<UIButton onClick={showList}>Показать</UIButton>
-				<UIButton onClick={hideList}>Скрыть</UIButton>
+				<UIButton onClick={showList} majorButton={true}>Показать</UIButton>
+				<UIButton onClick={hideList} majorButton={false}>Скрыть</UIButton>
 			</div>
 			{showFiltered && (
 				<div className={style.list}>
