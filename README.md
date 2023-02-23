@@ -4,6 +4,8 @@
 
 ![image](https://user-images.githubusercontent.com/102058870/220958644-103f59b8-dfeb-4ce7-8c9b-e263d7d3c6df.png)
 
+![image](https://user-images.githubusercontent.com/102058870/220960463-a56befcc-f777-4d0e-bdc4-9df9954a3459.png)
+
 npm run build - сборка проекта
 
 npm run start - запуск проекта на localhost
