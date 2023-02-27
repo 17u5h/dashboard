@@ -6,8 +6,11 @@ import {converterCellTimeToSec} from './converterCellTimeToSec'
 export const parseExcelTableToObject = (
 	excelTable: Row[],
 	dispatchUser: (user: User) => void,
-	dispatchVideoStartTime: (time: number) => void
+	dispatchVideoStartTime: (time: number) => void,
+	dispatchChartTitle: (chartTitle: string) => void
 ) => {
+	const chartTitle = (excelTable[0][0]).toString()
+	dispatchChartTitle(chartTitle)
 
 	const necessaryFields = excelTable[1]
 	const [, usernameHeader, emailHeader, , , , timeIntervalFromHeader, timeIntervalTillHeader] = necessaryFields

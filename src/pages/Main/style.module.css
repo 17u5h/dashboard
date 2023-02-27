@@ -2,7 +2,6 @@
     width: 1400px;
     display: flex;
     justify-content: center;
-
     flex-direction: column;
     gap: 40px;
     margin: auto auto 200px;
@@ -18,6 +17,11 @@
     justify-content: start;
     align-items: center;
     padding-top: 20px;
+}
+
+.block{
+    display: flex;
+    justify-content: space-around;
 }
 
 .showUsersBlock {

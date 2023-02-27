@@ -1,6 +1,6 @@
 import {create} from 'zustand'
 import {User} from '../types/user'
-import {SettingsState, UsersState, VideoState} from '../types/store'
+import {ChartState, SettingsState, UsersState, VideoState} from '../types/store'
 
 export const useUsersStore = create<UsersState>((set) => ({
 	users: [],
@@ -42,6 +42,7 @@ export const useUsersStore = create<UsersState>((set) => ({
 export const useVideoStore = create<VideoState>((set) => ({
 	videoStart: null,
 	videoEnd: null,
+	videoLink: '',
 	dispatchVideoStartTime: (time: number) =>
 		set((state) => ({
 			...state,
@@ -51,6 +52,11 @@ export const useVideoStore = create<VideoState>((set) => ({
 		set((state) => ({
 			...state,
 			videoEnd: time
+		})),
+	dispatchVideoLink: (link: string) =>
+		set((state) => ({
+			...state,
+			videoLink: link
 		}))
 }))
 
@@ -59,5 +65,13 @@ export const useSettingsStore = create<SettingsState>((set) => ({
 	dispatchIntervalForFiltering: (time: number) => set((state) => ({
 		...state,
 		intervalForFiltering: time
+	}))
+}))
+
+export const useChartStore = create<ChartState>((set) => ({
+	chartTitle: '',
+	dispatchChartTitle: (chartTitle: string) => set ((state) => ({
+		...state,
+		chartTitle
 	}))
 }))

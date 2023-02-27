@@ -17,11 +17,18 @@ export type UsersState = {
 export type VideoState = {
   videoStart: number | null
   videoEnd: number | null
+  videoLink: string
   dispatchVideoStartTime: (time: number) => void
   dispatchVideoEndTime: (time: number) => void
+  dispatchVideoLink: (link: string) => void
 }
 
 export type SettingsState = {
   intervalForFiltering: number
   dispatchIntervalForFiltering: (time: number) => void
+}
+
+export type ChartState = {
+  chartTitle: string
+  dispatchChartTitle: (chartTitle: string) => void
 }

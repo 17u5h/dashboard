@@ -2,12 +2,13 @@ import React from 'react'
 import style from './style.module.css'
 import readXlsxFile from 'read-excel-file'
 import { parseExcelTableToObject } from '../../lib/parseExcelTableToObject'
-import { useUsersStore, useVideoStore } from '../../store/store'
+import {useChartStore, useUsersStore, useVideoStore} from '../../store/store'
 import Icon from "./Icon";
 
 const InputExcel = () => {
   const {dispatchUser} = useUsersStore(({dispatchUser}) => ({dispatchUser}))
   const dispatchVideoStartTime = useVideoStore((state) => state.dispatchVideoStartTime)
+  const {dispatchChartTitle} = useChartStore(({dispatchChartTitle}) => ({dispatchChartTitle}))
 
   const handleUpload = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const target = event.target
@@ -18,7 +19,7 @@ const InputExcel = () => {
 
     try {
       const excelTable = await readXlsxFile(file, { sheet: 'Зрители' })
-      parseExcelTableToObject(excelTable, dispatchUser, dispatchVideoStartTime)
+      parseExcelTableToObject(excelTable, dispatchUser, dispatchVideoStartTime, dispatchChartTitle)
        } catch (e) {
       console.error(e)
     }

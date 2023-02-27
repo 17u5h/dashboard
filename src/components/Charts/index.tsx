@@ -1,23 +1,29 @@
 import React, {useEffect, useState} from 'react';
 import style from './style.module.css'
-import {useSettingsStore, useUsersStore} from "../../store/store";
+import {useSettingsStore, useUsersStore, useVideoStore} from "../../store/store";
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 import {CategoricalChartState} from "recharts/types/chart/generateCategoricalChart";
+import secToOutputTimeConverter from "../../lib/secToOutputTimeConverter";
 
 type Data = {
-	time: number
+	time: string
 	"подключилось": number
 	"отключилось": number
 }
 
 const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
-	const {incomingUsers, leavingUsers} = useUsersStore(({incomingUsers, leavingUsers}) => ({incomingUsers, leavingUsers}))
+	const {incomingUsers, leavingUsers} = useUsersStore(({incomingUsers, leavingUsers}) => ({
+		incomingUsers,
+		leavingUsers
+	}))
+	const {videoStart} = useVideoStore(({videoStart}) => ({videoStart}))
 	const {intervalForFiltering} = useSettingsStore(({intervalForFiltering}) => ({intervalForFiltering}))
 	const [data, setData] = useState<Data[]>([])
 
 	useEffect(() => {
+		if (!videoStart) return
 		const preparedData = incomingUsers.map((el, i) => ({
-			time: i * intervalForFiltering / 60,
+			time: secToOutputTimeConverter(videoStart + i * intervalForFiltering),
 			"подключилось": el.length,
 			"отключилось": leavingUsers[i].length
 		}))
