@@ -2,7 +2,7 @@ import {User} from "../types/user";
 import {secondsUserShouldWatch} from "../constants/constants";
 
 export const filterUsersForDashboard = (allUsers: User[]) => {
-	const usersClone: User[] = JSON.parse(JSON.stringify(allUsers))
+	const usersClone: User[] = structuredClone(allUsers)
 	usersClone.forEach(el => el.intervals = el.intervals.filter(el => (el.till - el.from) > secondsUserShouldWatch))
 	const usersForDashboard: User[] = []
 
