@@ -4,7 +4,7 @@ import PlayButtonIcon from "./PlayButton";
 import {useVideoStore} from "../../store/store";
 
 const Video = () => {
-	const {videoLink} = useVideoStore(({videoLink}) => ({videoLink}))
+	const {videoLink, timeToRewind} = useVideoStore(({videoLink, timeToRewind}) => ({videoLink, timeToRewind}))
 	const [play, setPlay] = useState(false);
 
 	const playHandler = () => {
@@ -17,7 +17,9 @@ const Video = () => {
 				<iframe
 					width="600"
 					height="350"
-					src={videoLink}
+					src={`${videoLink}?t=${timeToRewind}`}
+					allowFullScreen
+
 				></iframe>
 			</div>
 		);

@@ -18,9 +18,11 @@ export type VideoState = {
   videoStart: number | null
   videoEnd: number | null
   videoLink: string
+  timeToRewind: string
   dispatchVideoStartTime: (time: number) => void
   dispatchVideoEndTime: (time: number) => void
   dispatchVideoLink: (link: string) => void
+  dispatchTimeToRewindLink: (link: string) => void
 }
 
 export type SettingsState = {

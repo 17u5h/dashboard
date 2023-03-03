@@ -43,6 +43,7 @@ export const useVideoStore = create<VideoState>((set) => ({
 	videoStart: null,
 	videoEnd: null,
 	videoLink: '',
+	timeToRewind: '0',
 	dispatchVideoStartTime: (time: number) =>
 		set((state) => ({
 			...state,
@@ -57,6 +58,11 @@ export const useVideoStore = create<VideoState>((set) => ({
 		set((state) => ({
 			...state,
 			videoLink: link
+		})),
+	dispatchTimeToRewindLink: (time: string) =>
+		set((state) => ({
+			...state,
+			timeToRewind: time
 		}))
 }))
 

@@ -20,6 +20,7 @@ const ChartControls = () => {
 
 	const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
+		if (isNaN(Number(value))) console.error('введенное значение - не число')
 		setStep(value)
 		dispatchIntervalForFiltering(Number(value) * 60)
 	}

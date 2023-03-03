@@ -4,21 +4,24 @@ import {useSettingsStore, useUsersStore, useVideoStore} from "../../store/store"
 import {LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer} from 'recharts';
 import {CategoricalChartState} from "recharts/types/chart/generateCategoricalChart";
 import secToOutputTimeConverter from "../../lib/secToOutputTimeConverter";
+import {User} from "../../types/user";
 
-type Data = {
+type ChartData = {
 	time: string
 	"подключилось": number
 	"отключилось": number
 }
 
-const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
-	const {incomingUsers, leavingUsers} = useUsersStore(({incomingUsers, leavingUsers}) => ({
-		incomingUsers,
-		leavingUsers
-	}))
-	const {videoStart} = useVideoStore(({videoStart}) => ({videoStart}))
+type Props = {
+	setIncomingUsersInMoment: (users: User[]) => void
+	setLeavingUsersInMoment: (users: User[]) => void
+}
+
+const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: Props) => {
+	const {incomingUsers, leavingUsers} = useUsersStore(({incomingUsers, leavingUsers}) => ({incomingUsers, leavingUsers}))
+	const {videoStart, dispatchTimeToRewindLink} = useVideoStore(({videoStart, dispatchTimeToRewindLink}) => ({videoStart, dispatchTimeToRewindLink}))
 	const {intervalForFiltering} = useSettingsStore(({intervalForFiltering}) => ({intervalForFiltering}))
-	const [data, setData] = useState<Data[]>([])
+	const [chartData, setChartData] = useState<ChartData[]>([])
 
 	useEffect(() => {
 		if (!videoStart) return
@@ -27,7 +30,7 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
 			"подключилось": el.length,
 			"отключилось": leavingUsers[i].length
 		}))
-		setData(preparedData)
+		setChartData(preparedData)
 	}, [incomingUsers, leavingUsers])
 
 	const handleClick = (event: CategoricalChartState) => {
@@ -37,6 +40,8 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
 		const dataKeys = payload.map(el => el.dataKey)
 		if (dataKeys.find(el => el === "подключилось")) setIncomingUsersInMoment(incomingUsers[index])
 		if (dataKeys.find(el => el === "отключилось")) setLeavingUsersInMoment(leavingUsers[index])
+		dispatchTimeToRewindLink((index * intervalForFiltering).toString())
+		console.log((index * intervalForFiltering).toString())
 	}
 
 	return (
@@ -46,7 +51,7 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: any) => {
 					onClick={handleClick}
 					width={500}
 					height={300}
-					data={data}
+					data={chartData}
 					margin={{
 						top: 5,
 						right: 30,
