@@ -17,7 +17,7 @@ const Video = () => {
 				<iframe
 					width="600"
 					height="350"
-					src={`${videoLink}?t=${timeToRewind}`}
+					src={`${videoLink}?start=${timeToRewind}`}
 					allowFullScreen
 
 				></iframe>

@@ -9,8 +9,9 @@ export const parseExcelTableToObject = (
 	dispatchVideoStartTime: (time: number) => void,
 	dispatchChartTitle: (chartTitle: string) => void
 ) => {
-	const chartTitle = (excelTable[0][0]).toString()
-	dispatchChartTitle(chartTitle)
+	const chartName = (excelTable[0][0]).toString()
+	const chartDate = (excelTable[2][0]).toString()
+	dispatchChartTitle(`${chartName}  ${chartDate}`)
 
 	const necessaryFields = excelTable[1]
 	const [, usernameHeader, emailHeader, , , , timeIntervalFromHeader, timeIntervalTillHeader] = necessaryFields
