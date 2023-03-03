@@ -7,11 +7,12 @@ export const distributeUsersInIntervals = (
 	dispatchLeavers: (user: User[][]) => void,
 	dispatchVideoEndTime: (time: number) => void,
 	videoStartSeconds: number | null,
-	intervalForFiltering: number
+	intervalForFiltering: number,
+	secondsUserShouldWatch: number
 ) => {
 
 	if (videoStartSeconds === null) return
-	const users = filterUsersForDashboard(allUsers)
+	const users = filterUsersForDashboard(allUsers, secondsUserShouldWatch)
 	const videoEndSeconds = Math.max.apply(null, users.map((el) => Math.max.apply(null, el.intervals.map((el) => el.till))))
 	const OverallIntervals = (videoEndSeconds - videoStartSeconds) / intervalForFiltering
 

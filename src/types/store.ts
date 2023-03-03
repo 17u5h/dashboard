@@ -27,7 +27,9 @@ export type VideoState = {
 
 export type SettingsState = {
   intervalForFiltering: number
+  secondsUserShouldWatch: number
   dispatchIntervalForFiltering: (time: number) => void
+  dispatchSecondsUserShouldWatch: (time: number) => void
 }
 
 export type ChartState = {

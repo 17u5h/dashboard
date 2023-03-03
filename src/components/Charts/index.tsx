@@ -41,7 +41,6 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: Props) => {
 		if (dataKeys.find(el => el === "подключилось")) setIncomingUsersInMoment(incomingUsers[index])
 		if (dataKeys.find(el => el === "отключилось")) setLeavingUsersInMoment(leavingUsers[index])
 		dispatchTimeToRewindLink((index * intervalForFiltering).toString())
-		console.log((index * intervalForFiltering).toString())
 	}
 
 	return (

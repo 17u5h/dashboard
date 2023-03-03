@@ -6,6 +6,7 @@ import OneFilteredUser from './OneFilteredUser'
 import calcSummaryDuration from '../../../lib/calcSummaryDuration'
 import {TimeType} from '../../../enum/TimeType'
 import {initialMinutesToFilter} from '../../../constants/constants'
+import {useSettingsStore} from "../../../store/store";
 
 const FilterByOverallTime = ({users}: Users) => {
 	const [filteredUsers, setFilteredUsers] = useState<FilteredUser[]>([])
@@ -13,6 +14,7 @@ const FilterByOverallTime = ({users}: Users) => {
 	const [filterTimeSec, setFilterTimeSec] = useState<string>('')
 	const [showFiltered, setShowFiltered] = useState<boolean>(false)
 	const [noUsersFound, setNoUsersFound] = useState<boolean>(false)
+	const {dispatchSecondsUserShouldWatch} = useSettingsStore(({dispatchSecondsUserShouldWatch}) => ({dispatchSecondsUserShouldWatch}))
 
 	const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
 		const value = event.target.value
@@ -38,6 +40,7 @@ const FilterByOverallTime = ({users}: Users) => {
 	})
 
 	const showList = () => {
+		dispatchSecondsUserShouldWatch(Number(filterTimeMin) * 60 + Number(filterTimeSec))
 		const filterByThisSeconds = Math.abs(Number(filterTimeMin) * 60 + Number(filterTimeSec))
 		if (!filterByThisSeconds && filterByThisSeconds !== 0) throw new Error('введено не число')
 		const unfilteredUsers = users.map((el) => createUnfilteredUser(el))

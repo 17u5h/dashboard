@@ -1,6 +1,7 @@
 import {create} from 'zustand'
 import {User} from '../types/user'
 import {ChartState, SettingsState, UsersState, VideoState} from '../types/store'
+import {initialMinutesToFilter} from "../constants/constants";
 
 export const useUsersStore = create<UsersState>((set) => ({
 	users: [],
@@ -68,9 +69,14 @@ export const useVideoStore = create<VideoState>((set) => ({
 
 export const useSettingsStore = create<SettingsState>((set) => ({
 	intervalForFiltering: 60,
+	secondsUserShouldWatch: Number(initialMinutesToFilter) * 60,
 	dispatchIntervalForFiltering: (time: number) => set((state) => ({
 		...state,
 		intervalForFiltering: time
+	})),
+	dispatchSecondsUserShouldWatch: (time: number) => set((state) => ({
+		...state,
+		secondsUserShouldWatch: time
 	}))
 }))
 

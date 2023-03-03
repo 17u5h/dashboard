@@ -4,18 +4,17 @@ import UIButton from "../UI/UIButton";
 import {distributeUsersInIntervals} from "../../lib/distributeUsersInIntervals";
 import {useChartStore, useSettingsStore, useUsersStore, useVideoStore} from "../../store/store";
 
-
 const ChartControls = () => {
 	const [step, setStep] = useState<string>('1')
 	const [showHint, setShowHint] = useState<boolean>(false)
 	const {users, dispatchIncomers, dispatchLeavers,} = useUsersStore(({users, dispatchIncomers, dispatchLeavers,}) => ({users, dispatchIncomers, dispatchLeavers,}))
 	const {dispatchVideoEndTime, videoStart} = useVideoStore(({dispatchVideoEndTime, videoStart}) => ({dispatchVideoEndTime, videoStart}))
-	const {intervalForFiltering, dispatchIntervalForFiltering} = useSettingsStore(({intervalForFiltering, dispatchIntervalForFiltering}) => ({intervalForFiltering, dispatchIntervalForFiltering}))
+	const {intervalForFiltering, secondsUserShouldWatch, dispatchIntervalForFiltering} = useSettingsStore(({intervalForFiltering,secondsUserShouldWatch, dispatchIntervalForFiltering}) => ({intervalForFiltering, secondsUserShouldWatch, dispatchIntervalForFiltering}))
 	const {chartTitle} = useChartStore(({chartTitle}) => ({chartTitle}))
 
 	const handleRenderChart = () => {
 		setShowHint(!users.length)
-		distributeUsersInIntervals(users, dispatchIncomers, dispatchLeavers, dispatchVideoEndTime, videoStart, intervalForFiltering)
+		distributeUsersInIntervals(users, dispatchIncomers, dispatchLeavers, dispatchVideoEndTime, videoStart, intervalForFiltering, secondsUserShouldWatch)
 	}
 
 	const inputHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
