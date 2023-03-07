@@ -40,9 +40,9 @@ const FilterByOverallTime = ({users}: Users) => {
 	})
 
 	const showList = () => {
-		dispatchSecondsUserShouldWatch(Number(filterTimeMin) * 60 + Number(filterTimeSec))
 		const filterByThisSeconds = Math.abs(Number(filterTimeMin) * 60 + Number(filterTimeSec))
 		if (!filterByThisSeconds && filterByThisSeconds !== 0) throw new Error('введено не число')
+		dispatchSecondsUserShouldWatch(filterByThisSeconds)
 		const unfilteredUsers = users.map((el) => createUnfilteredUser(el))
 		const filterUsers = unfilteredUsers.filter((el) => el.duration >= filterByThisSeconds)
 		setFilteredUsers(filterUsers)

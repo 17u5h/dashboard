@@ -22,13 +22,15 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: Props) => {
 	const {videoStart, dispatchTimeToRewindLink} = useVideoStore(({videoStart, dispatchTimeToRewindLink}) => ({videoStart, dispatchTimeToRewindLink}))
 	const {intervalForFiltering} = useSettingsStore(({intervalForFiltering}) => ({intervalForFiltering}))
 	const [chartData, setChartData] = useState<ChartData[]>([])
+	const incomingUsersTag = 'подключилось'
+	const leavingUsersTag = 'отключилось'
 
 	useEffect(() => {
 		if (!videoStart) return
 		const preparedData = incomingUsers.map((el, i) => ({
 			time: secToOutputTimeConverter(videoStart + i * intervalForFiltering),
-			"подключилось": el.length,
-			"отключилось": leavingUsers[i].length
+			[incomingUsersTag]: el.length,
+			[leavingUsersTag]: leavingUsers[i].length
 		}))
 		setChartData(preparedData)
 	}, [incomingUsers, leavingUsers])
@@ -38,8 +40,8 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: Props) => {
 		const index = event.activeTooltipIndex
 		if (!payload || !index) throw new Error('что-то не так с графиком')
 		const dataKeys = payload.map(el => el.dataKey)
-		if (dataKeys.find(el => el === "подключилось")) setIncomingUsersInMoment(incomingUsers[index])
-		if (dataKeys.find(el => el === "отключилось")) setLeavingUsersInMoment(leavingUsers[index])
+		if (dataKeys.find(el => el === incomingUsersTag)) setIncomingUsersInMoment(incomingUsers[index])
+		if (dataKeys.find(el => el === leavingUsersTag)) setLeavingUsersInMoment(leavingUsers[index])
 		dispatchTimeToRewindLink((index * intervalForFiltering).toString())
 	}
 
@@ -62,9 +64,9 @@ const Charts = ({setIncomingUsersInMoment, setLeavingUsersInMoment}: Props) => {
 					<XAxis dataKey="time"/>
 					<YAxis/>
 					<Tooltip/>
-					<Line dataKey="подключилось" stroke="#5cd584" dot={{r: 0}} activeDot={{r: 8}} strokeWidth={2}
+					<Line dataKey={incomingUsersTag} stroke="#5cd584" dot={{r: 0}} activeDot={{r: 8}} strokeWidth={2}
 								className="clickable"/>
-					<Line dataKey="отключилось" stroke="#d55c5c" dot={{r: 0}} activeDot={{r: 8}} strokeWidth={2}/>
+					<Line dataKey={leavingUsersTag} stroke="#d55c5c" dot={{r: 0}} activeDot={{r: 8}} strokeWidth={2}/>
 				</LineChart>
 			</ResponsiveContainer>
 		</div>
